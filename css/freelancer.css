@@ -577,3 +577,16 @@ fieldset[disabled] .btn-success.active {
   */
   #no-more-tables td:before { content: attr(data-title); }
 }
+
+@media (min-width: 768px){
+  .heroes-logo{
+    width: 280px;
+  }
+}
+
+@media (max-width: 767px){
+  .heroes-logo{
+    width: 150px;
+    margin-top: -40px;
+  }
+}

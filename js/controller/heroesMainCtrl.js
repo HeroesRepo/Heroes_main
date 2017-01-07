@@ -1,5 +1,5 @@
 var app = angular.module("heroesMainApp")
-app.controller("heroesMainCtrl", ['$scope','$timeout', 'dailyStockSvc', 'completeStockSvc', function($scope, $timeout, dailyStockSvc, completeStockSvc){
+app.controller("heroesMainCtrl", ['$scope','$timeout', 'dailyStockSvc', 'completeStockSvc','donorDetailsSvc', function($scope, $timeout, dailyStockSvc, completeStockSvc,donorDetailsSvc){
 
   $scope.hasSearched = false;
   $scope.tablePopulated = false;
@@ -7,6 +7,8 @@ app.controller("heroesMainCtrl", ['$scope','$timeout', 'dailyStockSvc', 'complet
   $scope.stockData = {};
   $scope.svcData = {};
   $scope.origin;
+  $scope.latitude;
+  $scope.longitude;
   $scope.isSetOrigin = false;
 	$scope.search = {
     	bloodGroup: 'a_pos',
@@ -32,12 +34,9 @@ app.controller("heroesMainCtrl", ['$scope','$timeout', 'dailyStockSvc', 'complet
  	var distances = [];
 
  	angular.element(document).ready(function () {
-    if (navigator.geolocation) {
-    		navigator.geolocation.getCurrentPosition(showPosition, showError);
-        //$scope.hasAllowedLocation = true;
-		} else { 
-    		alert("Geolocation is not supported by this browser.");
-		}
+    $("#locationAlert").show().delay(9000).fadeOut();
+    //$("#donorDetailsInsertAlert").hide();
+    getLocation();
     completeStockSvc.getCompleteStock()
       .then(function(response){
         options.series[0] = response[0];
@@ -50,6 +49,14 @@ app.controller("heroesMainCtrl", ['$scope','$timeout', 'dailyStockSvc', 'complet
       })
 
   });
+
+  var getLocation = function(){
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else { 
+        alert("Geolocation is not supported by this browser.");
+    }
+  }
 
  	$scope.retrieveStock = function(){
  		$scope.hasSearched = true;
@@ -103,17 +110,36 @@ app.controller("heroesMainCtrl", ['$scope','$timeout', 'dailyStockSvc', 'complet
           response[i].last_updated = timeStampDiff(getFormattedDate(Date.now()),response[i].posting_time)
         }
         $scope.stockData = response;
-        //$scope.$apply()
       }, function(error){
 
       });   
     } 		
  	};
 
+  $scope.insertDonorData = function() {
+      donorDetailsSvc.setDonorDetails($scope.dn_name, $scope.dn_emailid, $scope.dn_phoneno, $scope.dn_bloodgroup)
+      .then(function(response){
+        $scope.dn_name = "";
+        $scope.dn_emailid = "";
+        $scope.dn_phoneno = "";
+        $scope.dn_bloodgroup = "";
+        $('.alertContainer').append("<div class='alert alert-success alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Congratulations! You have successfully registered as a donor.</div>").delay(7000).fadeOut();
+      }, function(error){
+
+      });
+
+  };
+
+  $scope.buttonClicked = function(){
+    var url = "https://maps.google.com/maps?saddr=" + $scope.latitude +"," + $scope.longitude + "&daddr=" + this.entry.bb_lat + "," + this.entry.bb_lon;
+    window.open(url,'_blank');
+
+  }
+
  	var showPosition = function(position){
- 		var latitude = position.coords.latitude;
-  	var longitude = position.coords.longitude;
-  	$scope.origin = new google.maps.LatLng(latitude,longitude);
+ 		$scope.latitude = position.coords.latitude;
+  	$scope.longitude = position.coords.longitude;
+  	$scope.origin = new google.maps.LatLng($scope.latitude,$scope.longitude);
     $scope.isSetOrigin = true;
  	}
 
@@ -138,7 +164,7 @@ app.controller("heroesMainCtrl", ['$scope','$timeout', 'dailyStockSvc', 'complet
     var a = stringToDate(timestamp1);
     var b = stringToDate(timestamp2);
   
-    if (a.getTime()>b.getTime()){
+    if (a.getTime()>=b.getTime()){
         var differenceInMilliseconds = a.getTime() - b.getTime();
         var leftorago = 'ago'
     } else {
@@ -147,11 +173,11 @@ app.controller("heroesMainCtrl", ['$scope','$timeout', 'dailyStockSvc', 'complet
     }
     
     // minutes
-    minutes = Math.ceil(differenceInMilliseconds / 1000 / 60);    
+    minutes = Math.floor(differenceInMilliseconds / 1000 / 60);    
     // hours
-    hours = Math.ceil(differenceInMilliseconds / 1000 / 60 / 60);
+    hours = Math.floor(differenceInMilliseconds / 1000 / 60 / 60);
     // days
-    days = Math.ceil(differenceInMilliseconds / 1000 / 60 / 60 / 24);
+    days = Math.floor(differenceInMilliseconds / 1000 / 60 / 60 / 24);
     
     if (days > 0){
         if (days == 1){
@@ -168,7 +194,7 @@ app.controller("heroesMainCtrl", ['$scope','$timeout', 'dailyStockSvc', 'complet
             timeunit = 'hours';    
         }
         output = hours +  ' ' + timeunit + ' ' + leftorago;
-    } else if (minutes > 0){
+    } else if (minutes >= 0){
             if (minutes == 1){
             timeunit = 'minute';
         } else {
