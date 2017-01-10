@@ -492,7 +492,7 @@ function isNumberKey(evt)
                               <td class="center" data-title="O+ve">
                                  <div class="input-group">
                                   <!--   <span class="input-group-addon" id="basic-addon1">AB+</span> -->
-                                    <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="rdp_ab_pos" onkeypress="return isNumberKey(event)" id="rdp_ab_pos">
+                                   <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="rdp_o_pos" onkeypress="return isNumberKey(event)" id="rdp_o_pos">
                                   </div>
                               </td>
                               <td class="center" data-title="B+ve">
@@ -504,7 +504,8 @@ function isNumberKey(evt)
                               <td class="center" data-title="AB+ve">
                                 <div class="input-group">
                                  <!--  <span class="input-group-addon" id="basic-addon1">O+</span> -->
-                                  <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="rdp_o_pos" onkeypress="return isNumberKey(event)" id="rdp_o_pos">
+                                    <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="rdp_ab_pos" onkeypress="return isNumberKey(event)" id="rdp_ab_pos">
+                                 
                                 </div>
                               </td>
                               <td class="center" data-title="A-ve">
