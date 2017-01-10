@@ -53,12 +53,13 @@ include "include/connection.php";
 if(isset($_POST['submit']))
 {
 extract($_POST);
+$bb_regno=$_POST['bb_regno'];
 $encrypt_password=md5($password);
 
-$query=mysqli_query($con,"select * from bb_info where bb_regno='$bb_regno'") or die(mysqli_error($con));
+$query=mysqli_query($con,"select * from bb_info where bb_regno=UCASE('$bb_regno') && bb_name='$bb_name'") or die(mysqli_error($con));
 if(mysqli_num_rows($query)==1)
 	{
-		$qry=mysqli_query($con,"select * from bb_credentials where bb_regno='$bb_regno'") or die(mysqli_error($con));
+		$qry=mysqli_query($con,"select * from bb_credentials where bb_regno=UCASE('$bb_regno')") or die(mysqli_error($con));
 		if(mysqli_num_rows($qry)==1)
 			{
 				$row=mysqli_fetch_array($qry);
@@ -69,7 +70,7 @@ if(mysqli_num_rows($query)==1)
 			}
 		else
 			{
-					$q=mysqli_query($con,"insert into bb_credentials (bb_regno,email_id,contact_no,password) values('$bb_regno','$email_id','$contact_no','$encrypt_password')") or die(mysqli_error($con));
+					$q=mysqli_query($con,"insert into bb_credentials (bb_regno,email_id,contact_no,password) values(UCASE('$bb_regno'),'$email_id','$contact_no','$encrypt_password')") or die(mysqli_error($con));
 			
 				if($q)
 				{ 
@@ -135,7 +136,7 @@ else
         <div class="col-md-12">
         	  <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-              <input  name="bb_regno" placeholder="Registration No." class="form-control"  type="text" id="bb_regno" onkeypress="return isNumberKey(event)" required>
+              <input  name="bb_regno" placeholder="Registration No." class="form-control"  type="text" id="bb_regno" autocapitalize="word" required>
               <span id="status" class="h1">
     	</div>
         </div>
