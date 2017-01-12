@@ -58,3 +58,7 @@
 #footer img {
     width:100%;
   }
+#rcorners {
+    border-radius: 25px;
+    padding: 15px; 
+}
