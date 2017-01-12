@@ -70,7 +70,7 @@ if(mysqli_num_rows($query)==1)
 			}
 		else
 			{
-					$q=mysqli_query($con,"insert into bb_credentials (bb_regno,email_id,contact_no,password) values(UCASE('$bb_regno'),'$email_id','$contact_no','$encrypt_password')") or die(mysqli_error($con));
+					$q=mysqli_query($con,"insert into bb_credentials (bb_regno,email_id,contact_no,altcontact_no,password) values(UCASE('$bb_regno'),'$email_id','$contact_no','$altcontact_no',$encrypt_password')") or die(mysqli_error($con));
 			
 				if($q)
 				{ 
@@ -151,11 +151,19 @@ else
             </div>
           </div>
           
-         <div class="col-md-12" align="left"><p>Contact</p></div>
+         <div class="col-md-12" align="left"><p>Contact No.1</p></div>
         <div class="col-md-12">
             <div class="input-group">
                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
               <input name="contact_no" placeholder="(845)555-1212" class="form-control" type="text" onkeypress="return isNumberKey(event)" required>
+                </div>
+          </div> 
+
+            <div class="col-md-12" align="left"><p>Contact No.2</p></div>
+        <div class="col-md-12">
+            <div class="input-group">
+               <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+              <input name="altcontact_no" placeholder="(845)555-1212" class="form-control" type="text" onkeypress="return isNumberKey(event)">
                 </div>
           </div> 
           
