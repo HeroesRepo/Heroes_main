@@ -51,7 +51,7 @@ $query2='select * from bb_info where bb_regno="'.$_SESSION['bb_regno'].'"';
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="currentdailyStock.php" class="logo">
+    <a href="updateStock.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini">Heroes</span>
       <!-- logo for regular state and mobile devices -->
@@ -122,22 +122,10 @@ $query2='select * from bb_info where bb_regno="'.$_SESSION['bb_regno'].'"';
       <!-- sidebar menu: : style can be found in sidebar.less -->
   <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
-        <li><a href="#"><i class="fa fa-th-list"></i> <span>Update  Stock</span>
-            <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-            </span>
-         </a>
-              <ul class="treeview-menu">
-                  <li><a href="form_one.php"><i class="fa fa-circle-o"></i> Form 1</a></li>
-                   <li><a href="form_two.php"><i class="fa fa-circle-o"></i> Form 2</a></li>
-                  <li><a href="form_three.php"><i class="fa fa-circle-o"></i> Form 3</a></li>
-                  <li><a href="form_four.php"><i class="fa fa-circle-o"></i> Form 4</a></li>
-                 <li><a href="form_five.php"><i class="fa fa-circle-o"></i> Form 5</a></li>
-              </ul>
-         </li>
-        <li class="treeview"><a href="currentdailyStock.php"><i class="fa fa-th"></i> <span>Current Stock</span></a></li>
-        <li><a href="#"><i class="fa fa-table"></i> <span>Historical Stock</span></a></li>
-        <li><a href="findDonors.php"><i class="fa fa-search"></i> <span>Find Donors</span></a></li> 
+         <li><a href="updateStock.php"><i class="fa fa-th"></i> <span>Update Stock</span></a></li>
+        <li><a href="currentdailyStock.php"><i class="fa fa-th"></i> <span>Current Stock</span></a></li>
+        <li><a href="historicalStock.php"><i class="fa fa-table"></i> <span>Historical Stock</span></a></li>
+        <li><a href="#"><i class="fa fa-search"></i> <span>Find Donors</span></a></li> 
         <li><a href="userProfile.php"><i class="fa fa-user"></i> <span>Profile</span></a></li>
         <li><a href="changePassword.php"><i class="fa fa-save"></i> <span>Change Password</span></a></li>
           <li><a href="logout.php"><i class="fa fa-power-off"></i> <span>Logout</span></a></li>    
@@ -151,12 +139,12 @@ $query2='select * from bb_info where bb_regno="'.$_SESSION['bb_regno'].'"';
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Historical Stock
+        Find Donors
         <!--<small>advanced tables</small>-->
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li class="active">Historical Stock</li>
+          <li class="active">Find Donors</li>
       </ol>
     </section>
 
@@ -174,16 +162,17 @@ $query2='select * from bb_info where bb_regno="'.$_SESSION['bb_regno'].'"';
                 <div class="col-md-2"></div>
                 <div class="col-md-5">
                   <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-tint"></i></span>
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-tint" style="color: red;"></i></span>
                     <select class="form-control" id="bloodGroup">
                       <option value="A+ve">A+ve</option>
-                      <option value="O+ve">O+ve</option>
                       <option value="B+ve">B+ve</option>
                       <option value="AB+ve">AB+ve</option>
-                       <option value="A-ve">A-ve</option>
-                      <option value="O-ve">O-ve</option>
-                      <option value="B-ve">B-ve</option>
-                      <option value="AB-ve">AB-ve</option>
+                      <option value="O+ve">O+ve</option>
+                       <option value="A-ve">A Neg</option>
+                      <option value="B-ve">B Neg</option>
+                      <option value="AB-ve">AB Neg</option>
+                      <option value="O-ve">O Neg</option>
+                      <option value="Bombay_bg">Bombay Blood Group</option>
                     </select>
                 </div>
             </div>
