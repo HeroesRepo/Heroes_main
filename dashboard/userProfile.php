@@ -26,7 +26,7 @@ if(isset($_POST['update']))
   extract($_POST);
  
   $query=mysqli_query($con,"update bb_credentials set
-  email_id='$email_id',contact_no='$contact_no'  where  bb_regno='".$_SESSION['bb_regno']."' ") or die(mysqli_error($con)); 
+  email_id='$email_id',contact_no='$contact_no',altcontact_no='$altcontact_no'  where  bb_regno='".$_SESSION['bb_regno']."' ") or die(mysqli_error($con)); 
    if($query)
                           {
                echo '<script type="text/javascript">';
@@ -109,7 +109,7 @@ if(isset($_POST['update']))
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="currentdailyStock.php" class="logo">
+    <a href="updateStock.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini">Heroes</span>
       <!-- logo for regular state and mobile devices -->
@@ -179,20 +179,8 @@ if(isset($_POST['update']))
       <!-- sidebar menu: : style can be found in sidebar.less -->
   <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
-         <li><a href="#"><i class="fa fa-th-list"></i> <span>Update  Stock</span>
-            <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-            </span>
-         </a>
-              <ul class="treeview-menu">
-                  <li><a href="form_one.php"><i class="fa fa-circle-o"></i> Form 1</a></li>
-                   <li><a href="form_two.php"><i class="fa fa-circle-o"></i> Form 2</a></li>
-                  <li><a href="form_three.php"><i class="fa fa-circle-o"></i> Form 3</a></li>
-                  <li><a href="form_four.php"><i class="fa fa-circle-o"></i> Form 4</a></li>
-                 <li><a href="form_five.php"><i class="fa fa-circle-o"></i> Form 5</a></li>
-              </ul>
-         </li>
-        <li class="treeview"><a href="currentdailyStock.php"><i class="fa fa-th"></i> <span>Current Stock</span></a></li>
+         <li><a href="updateStock.php"><i class="fa fa-th"></i> <span>Update Stock</span></a></li>
+        <li><a href="currentdailyStock.php"><i class="fa fa-th"></i> <span>Current Stock</span></a></li>
         <li><a href="historicalStock.php"><i class="fa fa-table"></i> <span>Historical Stock</span></a></li>
         <li><a href="findDonors.php"><i class="fa fa-search"></i> <span>Find Donors</span></a></li> 
         <li><a href="#"><i class="fa fa-user"></i> <span>Profile</span></a></li>
@@ -241,10 +229,16 @@ if(isset($_POST['update']))
                         <input name="email_id" placeholder="E-Mail Address" class="form-control"  type="email" id="email_id" value="<?php echo $rec_credentials['email_id']; ?>">
                         </div></td></tr>
                         <tr><td>&nbsp;</td></tr>
-                        <tr><td>Contact No.:</td><td>
+                        <tr><td>Contact No.1:</td><td>
                           <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
                           <input name="contact_no" placeholder="(845)555-1212" class="form-control" type="text" onkeypress="return isNumberKey(event)" value="<?php echo $rec_credentials['contact_no']; ?>">
+                          </div></td></tr>
+                          <tr><td>&nbsp;</td></tr>
+                        <tr><td>Contact No.2:</td><td>
+                          <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                          <input name="altcontact_no" placeholder="(845)555-1212" class="form-control" type="text" onkeypress="return isNumberKey(event)" value="<?php echo $rec_credentials['altcontact_no']; ?>">
                           </div></td></tr>
                            <tr><td>&nbsp;</td></tr>
                             <tr><td>&nbsp;</td><td align="left"><input type="submit" name="update" class="btn btn-success" value="Update Profile"></td></tr>
