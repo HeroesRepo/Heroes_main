@@ -201,8 +201,25 @@ function isNumberKey(evt)
             return true;
       }
 </SCRIPT>
+<script>
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').value =
+    h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+</script>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" onload="startTime()">
 <div class="wrapper">
 
   <header class="main-header">
@@ -311,7 +328,6 @@ function isNumberKey(evt)
          
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Update Stock</h3>
             </div>
             <!-- /.box-header -->
         <div class="box-body">
@@ -324,7 +340,7 @@ function isNumberKey(evt)
                 <div class="row">
                 
                
-                  <div class="row">
+                
                 <div class="col-md-6">
                 <div class="col-md-12" align="left">Date</div>
                 <div class="col-md-12" align="left">
@@ -340,14 +356,21 @@ function isNumberKey(evt)
                 
    
                 <div class="col-md-6">
-                <div class="col-md-12" align="left"><p></p></div>
-                 <div class="col-md-12" align="left"></div> 
+                <div class="col-md-12" align="left">Time</div>
+                 <div class="col-md-12" align="left">
+                 <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                 <input type="text" name="time" class="form-control" id="txt"/>
+                 <!-- <input type="text" name="zero" id="zero" hidden=""> -->
+                  </div>
+                <!-- <div id="txt"></div> -->
+                 </div> 
               </div></div>
             
       
              <div class="col-md-12" align="left"><p>Daily Stock</p></div>
              
-                <div class="col-md-12" style="background-color: #dee5ed"><div class="col-md-12"><b>Whole Blood:</b></div>
+                <div class="col-md-12" style="background-color: #dee5ed" id="rcorners"><div class="col-md-12"><b>Whole Blood:</b></div>
                <div class="col-md-12"></div>
                 <div class="tab-content">
              
@@ -412,7 +435,7 @@ function isNumberKey(evt)
              </div>
             </div></div>
  <!-- PCV Tab --><div class="col-md-12">&nbsp;</div>
-  <div class="col-md-12" style="background-color: #bdcbde">
+  <div class="col-md-12" style="background-color: #bdcbde" id="rcorners">
         <div class="col-md-12"><b>PCV:</b></div>
         <div class="col-md-12"></div>
               <div id="pcv">
@@ -483,7 +506,7 @@ function isNumberKey(evt)
             </div>
           <!-- /PCV Tab -->
           <!-- RDP Tab --><div class="col-md-12">&nbsp;</div>
-        <div class="col-md-12" style="background-color: #9fb6cf">   
+        <div class="col-md-12" style="background-color: #9fb6cf" id="rcorners">   
         <div class="col-md-12"><b>RDP:</b></div>
         <div class="col-md-12"></div> 
 
@@ -542,7 +565,7 @@ function isNumberKey(evt)
         </div>
       <!-- /RDP Tab -->
           <!-- FFP Tab --><div class="col-md-12">&nbsp;</div> 
-        <div class="col-md-12" style="background-color: #8599c2">  
+        <div class="col-md-12" style="background-color: #8599c2" id="rcorners">  
         <div class="col-md-12"><b>FFP:</b></div>
         <div class="col-md-12"></div> 
 
