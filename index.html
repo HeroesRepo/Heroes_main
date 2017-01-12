@@ -135,7 +135,7 @@ $( "#searchButton" ).click(function() {
                             <td data-title="Blood Bank Name">{{entry.bb_name}}</td>
                             <td data-title="Quantity">{{entry.stock}} bags</td>
                             <td data-title="Distance" class="numeric" ng-if="'isSetOrigin'">{{entry.distance}} <button class="btn" style="margin-left: 10px;" ng-click="buttonClicked()">Directions</button></td>
-                            <td data-title="Contact" class="numeric"><a ng-href="tel:{{entry.contact_no}}">{{entry.contact_no}}</a></td>
+                            <td data-title="Contact" class="numeric"><a ng-href="tel:{{entry.contact_no}}">{{entry.contact_no}}, {{entry.altcontact_no}}</a></td>
                             <td data-title="Last Updated" class="numeric">{{entry.last_updated}}</td>
                         </tr>
                     </tbody>
