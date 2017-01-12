@@ -48,7 +48,7 @@ $sql=mysqli_query($con,"SELECT * FROM bb_credentials WHERE email_id='$email_id' 
 				
 					echo"<script>";
 					//echo "Login Successful..!!";
-					echo"window.location.href='currentdailyStock.php'";
+					echo"window.location.href='updateStock.php'";
 					echo"</script>";
 				}
 				else

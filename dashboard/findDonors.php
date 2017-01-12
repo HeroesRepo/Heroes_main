@@ -168,10 +168,10 @@ $query2='select * from bb_info where bb_regno="'.$_SESSION['bb_regno'].'"';
                       <option value="B+ve">B+ve</option>
                       <option value="AB+ve">AB+ve</option>
                       <option value="O+ve">O+ve</option>
-                       <option value="A-ve">A Neg</option>
-                      <option value="B-ve">B Neg</option>
-                      <option value="AB-ve">AB Neg</option>
-                      <option value="O-ve">O Neg</option>
+                       <option value="A-ve">ANeg</option>
+                      <option value="B-ve">BNeg</option>
+                      <option value="AB-ve">ABNeg</option>
+                      <option value="O-ve">ONeg</option>
                       <option value="Bombay_bg">Bombay Blood Group</option>
                     </select>
                 </div>
