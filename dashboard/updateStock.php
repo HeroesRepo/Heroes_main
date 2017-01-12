@@ -108,6 +108,10 @@ $query2='select * from bb_info where bb_regno="'.$_SESSION['bb_regno'].'"  ';
          $('#ffp_o_neg1').text(populateModal($('#ffp_o_neg').val()));
          $('#ffp_ab_pos1').text(populateModal($('#ffp_ab_pos').val()));
          $('#ffp_ab_neg1').text(populateModal($('#ffp_ab_neg').val()));
+         $('#bombay_wb1').text(populateModal($('#bombay_wb').val()));
+         $('#bombay_pcv1').text(populateModal($('#bombay_pcv').val()));
+         $('#bombay_rdp1').text(populateModal($('#bombay_rdp').val()));
+         $('#bombay_ffp1').text(populateModal($('#bombay_ffp').val()));
  });
 
     var populateModal = function(val){
@@ -117,15 +121,6 @@ $query2='select * from bb_info where bb_regno="'.$_SESSION['bb_regno'].'"  ';
         return val;
 
     }
-});
- $( document ).ready(function() {
- $('.btnNext').click(function(){
-  $('.nav-tabs > .active').next('li').find('a').trigger('click');
-});
-
-  $('.btnPrevious').click(function(){
-  $('.nav-tabs > .active').prev('li').find('a').trigger('click');
-});  
 });
 </script>
 <script>
@@ -175,9 +170,13 @@ function myFunction() {
               var ffp_o_neg = populateModal_submit(document.getElementById("ffp_o_neg").value);
               var ffp_ab_pos = populateModal_submit(document.getElementById("ffp_ab_pos").value);
               var ffp_ab_neg = populateModal_submit(document.getElementById("ffp_ab_neg").value);
+              var bombay_wb = populateModal_submit(document.getElementById("bombay_wb").value);
+              var bombay_pcv = populateModal_submit(document.getElementById("bombay_pcv").value);
+              var bombay_rdp = populateModal_submit(document.getElementById("bombay_rdp").value);
+              var bombay_ffp = populateModal_submit(document.getElementById("bombay_ffp").value);
 
 // Returns successful data submission message when the entered information is stored in database.
-var dataString = 'date1=' + date + '&wb_a_pos1=' + wb_a_pos + '&wb_a_neg1=' + wb_a_neg + '&wb_b_pos1=' + wb_b_pos + '&wb_b_neg1=' + wb_b_neg + '&wb_o_pos1=' + wb_o_pos + '&wb_o_neg1=' + wb_o_neg + '&wb_ab_pos1=' + wb_ab_pos + '&wb_ab_neg1=' + wb_ab_neg + '&pcv_a_pos1=' + pcv_a_pos + '&pcv_a_neg1=' + pcv_a_neg + '&pcv_b_pos1=' + pcv_b_pos + '&pcv_b_neg1=' + pcv_b_neg + '&pcv_o_pos1=' + pcv_o_pos + '&pcv_o_neg1=' + pcv_o_neg + '&pcv_ab_pos1=' + pcv_ab_pos + '&pcv_ab_neg1=' + pcv_ab_neg + '&rdp_a_pos1=' + rdp_a_pos + '&rdp_a_neg1=' + rdp_a_neg + '&rdp_b_pos1=' + rdp_b_pos + '&rdp_b_neg1=' + rdp_b_neg + '&rdp_o_pos1=' + rdp_o_pos + '&rdp_o_neg1=' + rdp_o_neg + '&rdp_ab_pos1=' + rdp_ab_pos + '&rdp_ab_neg1=' + rdp_ab_neg + '&ffp_a_pos1=' + ffp_a_pos + '&ffp_a_neg1=' + ffp_a_neg + '&ffp_b_pos1=' + ffp_b_pos + '&ffp_b_neg1=' + ffp_b_neg + '&ffp_o_pos1=' + ffp_o_pos + '&ffp_o_neg1=' + ffp_o_neg + '&ffp_ab_pos1=' + ffp_ab_pos + '&ffp_ab_neg1=' + ffp_ab_neg;
+var dataString = 'date1=' + date + '&wb_a_pos1=' + wb_a_pos + '&wb_a_neg1=' + wb_a_neg + '&wb_b_pos1=' + wb_b_pos + '&wb_b_neg1=' + wb_b_neg + '&wb_o_pos1=' + wb_o_pos + '&wb_o_neg1=' + wb_o_neg + '&wb_ab_pos1=' + wb_ab_pos + '&wb_ab_neg1=' + wb_ab_neg + '&pcv_a_pos1=' + pcv_a_pos + '&pcv_a_neg1=' + pcv_a_neg + '&pcv_b_pos1=' + pcv_b_pos + '&pcv_b_neg1=' + pcv_b_neg + '&pcv_o_pos1=' + pcv_o_pos + '&pcv_o_neg1=' + pcv_o_neg + '&pcv_ab_pos1=' + pcv_ab_pos + '&pcv_ab_neg1=' + pcv_ab_neg + '&rdp_a_pos1=' + rdp_a_pos + '&rdp_a_neg1=' + rdp_a_neg + '&rdp_b_pos1=' + rdp_b_pos + '&rdp_b_neg1=' + rdp_b_neg + '&rdp_o_pos1=' + rdp_o_pos + '&rdp_o_neg1=' + rdp_o_neg + '&rdp_ab_pos1=' + rdp_ab_pos + '&rdp_ab_neg1=' + rdp_ab_neg + '&ffp_a_pos1=' + ffp_a_pos + '&ffp_a_neg1=' + ffp_a_neg + '&ffp_b_pos1=' + ffp_b_pos + '&ffp_b_neg1=' + ffp_b_neg + '&ffp_o_pos1=' + ffp_o_pos + '&ffp_o_neg1=' + ffp_o_neg + '&ffp_ab_pos1=' + ffp_ab_pos + '&ffp_ab_neg1=' + ffp_ab_neg + '&bombay_wb1=' + bombay_wb + '&bombay_pcv1=' + bombay_pcv + '&bombay_rdp1=' + bombay_rdp + '&bombay_ffp1=' + bombay_ffp;
 // AJAX code to submit form.
             $.ajax({
             type: "POST",
@@ -190,7 +189,7 @@ var dataString = 'date1=' + date + '&wb_a_pos1=' + wb_a_pos + '&wb_a_neg1=' + wb
             $('#formfield')[0].reset();
             }
             });
-        }
+        }     
 </script>
 <SCRIPT language=Javascript>
 function isNumberKey(evt)
@@ -359,11 +358,9 @@ function checkTime(i) {
                 <div class="col-md-12" align="left">Time</div>
                  <div class="col-md-12" align="left">
                  <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                  <input type="text" name="time" class="form-control" id="txt"/>
-                 <!-- <input type="text" name="zero" id="zero" hidden=""> -->
                   </div>
-                <!-- <div id="txt"></div> -->
                  </div> 
               </div></div>
             
@@ -564,8 +561,8 @@ function checkTime(i) {
             </div>
         </div>
       <!-- /RDP Tab -->
-          <!-- FFP Tab --><div class="col-md-12">&nbsp;</div> 
-        <div class="col-md-12" style="background-color: #8599c2" id="rcorners">  
+                <!-- FFP Tab --><div class="col-md-12">&nbsp;</div> 
+        <div class="col-md-12" style="background-color: #8599c2"  id="rcorners">  
         <div class="col-md-12"><b>FFP:</b></div>
         <div class="col-md-12"></div> 
 
@@ -621,9 +618,44 @@ function checkTime(i) {
                         </div>
                  </div>
           </div>
+          </div>
+          <!-- FFP Tab --><div class="col-md-12">&nbsp;</div> 
+        <div class="col-md-12" style="background-color: #dee5ed""  id="rcorners">  
+        <div class="col-md-12"><b>Bombay Blood Group:</b></div>
+        <div class="col-md-12"></div> 
+
+    <div id="bombay_bg" class="bombay_bg">
+    
+                  
+              <div class="col-md-3">
+                        <div class="input-group">
+                          <span class="input-group-addon" id="basic-addon1">WB</span>
+                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="bombay_wb" onkeypress="return isNumberKey(event)" id="bombay_wb">
+                        </div>
+                 </div>
+                 <div class="col-md-3">
+                        <div class="input-group">
+                          <span class="input-group-addon" id="basic-addon1">PCV</span>
+                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="bombay_pcv" onkeypress="return isNumberKey(event)" id="bombay_pcv">
+                        </div>
+                 </div>
+                  <div class="col-md-3">
+                        <div class="input-group">
+                          <span class="input-group-addon" id="basic-addon1">RDP</span>
+                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="bombay_rdp" onkeypress="return isNumberKey(event)" id="bombay_rdp">
+                        </div>
+                 </div>
+                 <div class="col-md-3">
+                        <div class="input-group">
+                          <span class="input-group-addon" id="basic-addon1">FFP</span>
+                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="bombay_ffp" onkeypress="return isNumberKey(event)" id="bombay_ffp">
+                        </div>
+                 </div>
+
+          </div>
           </div> 
-                 <div class="col-md-12">&nbsp;</div>
-              <div class="col-md-12">
+          <div class="col-md-12">&nbsp;</div>
+          <div class="col-md-12">
                   <center>
                       <input type="button" name="btn" value="Submit" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-primary"/></center>
                     </div>       
@@ -635,30 +667,32 @@ function checkTime(i) {
             <div class="col-md-2"></div>
             </div>
           </div>
-
-          </div>
-            <!-- /.box-body -->
-          </div>
+           
+         </div>
           <!-- /.box -->
-
-        </div>
+       </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
-        <!--Logo Footer -->
-      <div id="footer">
-        <img src= "images/logo.png" />
-      </div>
     </section>
+  <div id="footer">
+      <img src= "images/logo.png" />
+  </div>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-         </div>
+<footer class="main-footer">
+    <div class="pull-right hidden-xs"></div>
     <strong>Copyright &copy; 2016 <a href="#">Heroes</a>.</strong> All rights
     reserved.
   </footer>
+ 
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
 
 
 <div class="modal fade" id="confirm-submit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -684,6 +718,7 @@ function checkTime(i) {
                             <th>BNeg</th>
                             <th>ABNeg</th>
                             <th>ONeg</th>
+                            <th>Bombay Blood Group</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -698,6 +733,7 @@ function checkTime(i) {
                               <td class="center" data-title="BNeg" id="wb_b_neg1"></td>
                               <td class="center" data-title="ABNeg" id="wb_ab_neg1"></td>         
                               <td class="center" data-title="ONeg" id="wb_o_neg1"></td>
+                              <td class="center" data-title="Bombay Blood Group" id="bombay_wb1"></td>
                             </tr>
 
                              <tr>
@@ -709,8 +745,8 @@ function checkTime(i) {
                               <td class="center" data-title="ANeg" id="pcv_a_neg1"></td>
                               <td class="center" data-title="BNeg" id="pcv_b_neg1"></td>
                               <td class="center" data-title="ABNeg" id="pcv_ab_neg1"></td>        
-                              <td class="center" data-title="ONeg" id="pcv_o_neg1"></td>              
-                              
+                              <td class="center" data-title="ONeg" id="pcv_o_neg1"></td> 
+                              <td class="center" data-title="Bombay Blood Group" id="bombay_pcv1"></td>
                             </tr>
 
 
@@ -724,7 +760,7 @@ function checkTime(i) {
                               <td class="center" data-title="BNeg" id="rdp_b_neg1"></td>
                               <td class="center" data-title="ABNeg" id="rdp_ab_neg1"></td>         
                               <td class="center" data-title="ONeg" id="rdp_o_neg1"></td>           
-                              
+                              <td class="center" data-title="Bombay Blood Group" id="bombay_rdp1"></td>
                             </tr>
 
 
@@ -737,8 +773,8 @@ function checkTime(i) {
                               <td class="center" data-title="ANeg" id="ffp_a_neg1"></td>
                               <td class="center" data-title="BNeg" id="ffp_b_neg1"></td>
                               <td class="center" data-title="ABNeg" id="ffp_ab_neg1"></td>        
-                              <td class="center" data-title="ONeg" id="ffp_o_neg1"></td>               
-                              
+                              <td class="center" data-title="ONeg" id="ffp_o_neg1"></td> 
+                              <td class="center" data-title="Bombay Blood Group" id="bombay_ffp1"></td>
                             </tr>
                       </tbody>
                 </table>
