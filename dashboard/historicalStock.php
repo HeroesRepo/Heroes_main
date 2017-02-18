@@ -125,6 +125,7 @@ $query2='select * from bb_info where bb_regno="'.$_SESSION['bb_regno'].'"';
         <li><a href="updateStock.php"><i class="fa fa-th"></i> <span>Update Stock</span></a></li>
         <li><a href="currentdailyStock.php"><i class="fa fa-th"></i> <span>Current Stock</span></a></li>
         <li><a href="#"><i class="fa fa-table"></i> <span>Historical Stock</span></a></li>
+ <li><a href="broadCast.php"><i class="fa fa-globe"></i> <span>Broadcast</span></a></li>
         <li><a href="findDonors.php"><i class="fa fa-search"></i> <span>Find Donors</span></a></li>
         <li><a href="userProfile.php"><i class="fa fa-user"></i> <span>Profile</span></a></li>
         <li><a href="changePassword.php"><i class="fa fa-save"></i> <span>Change Password</span></a></li>
@@ -180,7 +181,9 @@ $query2='select * from bb_info where bb_regno="'.$_SESSION['bb_regno'].'"';
                 
               </div>
             </div><br>
-  <div id="table-container"></div>          
+  <div id="table-container">
+  
+  </div>          
 <script src="dist/js/jquery.js"></script>
 
 <script>
@@ -195,7 +198,7 @@ $searchButton1.on('click',function(){
 
 $('#input').val($date_new.eq(0).val());
 var value=$('#input').val();
-console.log(value);
+//console.log(value);
 $.ajax(
 {
 url:'fetchdata.php',

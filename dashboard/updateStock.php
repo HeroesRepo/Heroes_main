@@ -18,7 +18,8 @@ $query2='select * from bb_info where bb_regno="'.$_SESSION['bb_regno'].'"  ';
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Heroes</title>
-  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script> -->
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -31,7 +32,7 @@ $query2='select * from bb_info where bb_regno="'.$_SESSION['bb_regno'].'"  ';
   <!-- DataTables -->
   <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
    <!-- Table style -->
-   <link rel="stylesheet" href="dist/css/table.css">
+   <link rel="stylesheet" type="text/css" href="dist/css/table.css">
 
   <!--   <link rel="stylesheet" href="dist/css/stylesheet.css"> -->
   <!-- Theme style -->
@@ -46,9 +47,13 @@ $query2='select * from bb_info where bb_regno="'.$_SESSION['bb_regno'].'"  ';
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
   
   <style>
-    .input-group{
-  padding-bottom:12px;
+  .input-group{
+  padding-bottom:10px;
   }
+  #rcorners {
+    border-radius: 25px;
+    padding: 8px; 
+}
 
  </style>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -57,6 +62,56 @@ $query2='select * from bb_info where bb_regno="'.$_SESSION['bb_regno'].'"  ';
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+<script>
+  $(document).ready(function() {
+$('#submitBtn').attr('disabled', true);
+$('input[type="text"]').on('keyup',function() {
+    //var textarea_value = $("#texta").val();
+    var wb_a_posNew = $('input[name="wb_a_pos"]').val();
+    var wb_b_posNew = $('input[name="wb_b_pos"]').val();
+    var wb_ab_posNew = $('input[name="wb_ab_pos"]').val();
+    var wb_o_posNew = $('input[name="wb_o_pos"]').val();
+    var wb_a_negNew = $('input[name="wb_a_neg"]').val();
+    var wb_b_negNew = $('input[name="wb_b_neg"]').val();
+    var wb_ab_negNew = $('input[name="wb_ab_neg"]').val();
+    var wb_o_negNew = $('input[name="wb_o_neg"]').val();
+
+    var pcv_a_posNew = $('input[name="pcv_a_pos"]').val();
+    var pcv_b_posNew = $('input[name="pcv_b_pos"]').val();
+    var pcv_ab_posNew = $('input[name="pcv_ab_pos"]').val();
+    var pcv_o_posNew = $('input[name="pcv_o_pos"]').val();
+    var pcv_a_negNew = $('input[name="pcv_a_neg"]').val();
+    var pcv_b_negNew = $('input[name="pcv_b_neg"]').val();
+    var pcv_ab_negNew = $('input[name="pcv_ab_neg"]').val();
+    var pcv_o_negNew = $('input[name="pcv_o_neg"]').val();
+
+    var rdp_a_posNew = $('input[name="rdp_a_pos"]').val();
+    var rdp_b_posNew = $('input[name="rdp_b_pos"]').val();
+    var rdp_ab_posNew = $('input[name="rdp_ab_pos"]').val();
+    var rdp_o_posNew = $('input[name="rdp_o_pos"]').val();
+    var rdp_a_negNew = $('input[name="rdp_a_neg"]').val();
+    var rdp_b_negNew = $('input[name="rdp_b_neg"]').val();
+    var rdp_ab_negNew = $('input[name="rdp_ab_neg"]').val();
+    var rdp_o_negNew = $('input[name="rdp_o_neg"]').val();
+
+    var ffp_a_posNew = $('input[name="ffp_a_pos"]').val();
+    var ffp_b_posNew = $('input[name="ffp_b_pos"]').val();
+    var ffp_ab_posNew = $('input[name="ffp_ab_pos"]').val();
+    var ffp_o_posNew = $('input[name="ffp_o_pos"]').val();
+    var ffp_a_negNew = $('input[name="ffp_a_neg"]').val();
+    var ffp_b_negNew = $('input[name="ffp_b_neg"]').val();
+    var ffp_ab_negNew = $('input[name="ffp_ab_neg"]').val();
+    var ffp_o_negNew = $('input[name="ffp_o_neg"]').val();
+
+    if(wb_a_posNew != '' && wb_b_posNew != '' && wb_ab_posNew != '' && wb_o_posNew != '' && wb_a_negNew != '' && wb_b_negNew != '' && wb_ab_negNew != '' && wb_o_negNew != '' && pcv_a_posNew != '' && pcv_b_posNew != '' && pcv_ab_posNew != '' && pcv_o_posNew != '' && pcv_a_negNew != '' && pcv_b_negNew != '' && pcv_ab_negNew != '' && pcv_o_negNew != '' && rdp_a_posNew != '' && rdp_b_posNew != '' && rdp_ab_posNew != '' && rdp_o_posNew != '' && rdp_a_negNew != '' && rdp_b_negNew != '' && rdp_ab_negNew != '' && rdp_o_negNew != '' && ffp_a_posNew != '' && ffp_b_posNew != '' && ffp_ab_posNew != '' && ffp_o_posNew != '' && ffp_a_negNew != '' && ffp_b_negNew != '' && ffp_ab_negNew != '' && ffp_o_negNew != '') {
+        $('#submitBtn').attr('disabled' , false);
+    }else{
+        $('#submitBtn').attr('disabled' , true);
+    }
+});
+
+});
+</script>
  <script>
   $( document ).ready(function() {
     var currentBoxNumber = 0;
@@ -64,7 +119,7 @@ $query2='select * from bb_info where bb_regno="'.$_SESSION['bb_regno'].'"  ';
         if (event.keyCode == 13) {
             textboxes = $("input.form-control");
             currentBoxNumber = textboxes.index(this);
-            console.log(textboxes.index(this));
+           // console.log(textboxes.index(this));
             if (textboxes[currentBoxNumber + 1] != null) {
                 nextBox = textboxes[currentBoxNumber + 1];
                 nextBox.focus();
@@ -74,6 +129,8 @@ $query2='select * from bb_info where bb_regno="'.$_SESSION['bb_regno'].'"  ';
             }
         }
 });
+
+
 
     $('#submitBtn').click(function() {
          $('#wb_a_pos1').text(populateModal($('#wb_a_pos').val()));
@@ -108,10 +165,10 @@ $query2='select * from bb_info where bb_regno="'.$_SESSION['bb_regno'].'"  ';
          $('#ffp_o_neg1').text(populateModal($('#ffp_o_neg').val()));
          $('#ffp_ab_pos1').text(populateModal($('#ffp_ab_pos').val()));
          $('#ffp_ab_neg1').text(populateModal($('#ffp_ab_neg').val()));
-         $('#bombay_wb1').text(populateModal($('#bombay_wb').val()));
-         $('#bombay_pcv1').text(populateModal($('#bombay_pcv').val()));
-         $('#bombay_rdp1').text(populateModal($('#bombay_rdp').val()));
-         $('#bombay_ffp1').text(populateModal($('#bombay_ffp').val()));
+         $('#wb_bombay1').text(populateModal($('#wb_bombay').val()));
+         $('#pcv_bombay1').text(populateModal($('#pcv_bombay').val()));
+         $('#rdp_bombay1').text(populateModal($('#rdp_bombay').val()));
+         $('#ffp_bombay1').text(populateModal($('#ffp_bombay').val()));
  });
 
     var populateModal = function(val){
@@ -124,7 +181,6 @@ $query2='select * from bb_info where bb_regno="'.$_SESSION['bb_regno'].'"  ';
 });
 </script>
 <script>
- 
 
 function myFunction() {
 
@@ -170,14 +226,15 @@ function myFunction() {
               var ffp_o_neg = populateModal_submit(document.getElementById("ffp_o_neg").value);
               var ffp_ab_pos = populateModal_submit(document.getElementById("ffp_ab_pos").value);
               var ffp_ab_neg = populateModal_submit(document.getElementById("ffp_ab_neg").value);
-              var bombay_wb = populateModal_submit(document.getElementById("bombay_wb").value);
-              var bombay_pcv = populateModal_submit(document.getElementById("bombay_pcv").value);
-              var bombay_rdp = populateModal_submit(document.getElementById("bombay_rdp").value);
-              var bombay_ffp = populateModal_submit(document.getElementById("bombay_ffp").value);
+              var wb_bombay = populateModal_submit(document.getElementById("wb_bombay").value);
+              var pcv_bombay = populateModal_submit(document.getElementById("pcv_bombay").value);
+              var rdp_bombay = populateModal_submit(document.getElementById("rdp_bombay").value);
+              var ffp_bombay = populateModal_submit(document.getElementById("ffp_bombay").value);
 
 // Returns successful data submission message when the entered information is stored in database.
-var dataString = 'date1=' + date + '&wb_a_pos1=' + wb_a_pos + '&wb_a_neg1=' + wb_a_neg + '&wb_b_pos1=' + wb_b_pos + '&wb_b_neg1=' + wb_b_neg + '&wb_o_pos1=' + wb_o_pos + '&wb_o_neg1=' + wb_o_neg + '&wb_ab_pos1=' + wb_ab_pos + '&wb_ab_neg1=' + wb_ab_neg + '&pcv_a_pos1=' + pcv_a_pos + '&pcv_a_neg1=' + pcv_a_neg + '&pcv_b_pos1=' + pcv_b_pos + '&pcv_b_neg1=' + pcv_b_neg + '&pcv_o_pos1=' + pcv_o_pos + '&pcv_o_neg1=' + pcv_o_neg + '&pcv_ab_pos1=' + pcv_ab_pos + '&pcv_ab_neg1=' + pcv_ab_neg + '&rdp_a_pos1=' + rdp_a_pos + '&rdp_a_neg1=' + rdp_a_neg + '&rdp_b_pos1=' + rdp_b_pos + '&rdp_b_neg1=' + rdp_b_neg + '&rdp_o_pos1=' + rdp_o_pos + '&rdp_o_neg1=' + rdp_o_neg + '&rdp_ab_pos1=' + rdp_ab_pos + '&rdp_ab_neg1=' + rdp_ab_neg + '&ffp_a_pos1=' + ffp_a_pos + '&ffp_a_neg1=' + ffp_a_neg + '&ffp_b_pos1=' + ffp_b_pos + '&ffp_b_neg1=' + ffp_b_neg + '&ffp_o_pos1=' + ffp_o_pos + '&ffp_o_neg1=' + ffp_o_neg + '&ffp_ab_pos1=' + ffp_ab_pos + '&ffp_ab_neg1=' + ffp_ab_neg + '&bombay_wb1=' + bombay_wb + '&bombay_pcv1=' + bombay_pcv + '&bombay_rdp1=' + bombay_rdp + '&bombay_ffp1=' + bombay_ffp;
+var dataString = 'date1=' + date + '&wb_a_pos1=' + wb_a_pos + '&wb_a_neg1=' + wb_a_neg + '&wb_b_pos1=' + wb_b_pos + '&wb_b_neg1=' + wb_b_neg + '&wb_o_pos1=' + wb_o_pos + '&wb_o_neg1=' + wb_o_neg + '&wb_ab_pos1=' + wb_ab_pos + '&wb_ab_neg1=' + wb_ab_neg + '&pcv_a_pos1=' + pcv_a_pos + '&pcv_a_neg1=' + pcv_a_neg + '&pcv_b_pos1=' + pcv_b_pos + '&pcv_b_neg1=' + pcv_b_neg + '&pcv_o_pos1=' + pcv_o_pos + '&pcv_o_neg1=' + pcv_o_neg + '&pcv_ab_pos1=' + pcv_ab_pos + '&pcv_ab_neg1=' + pcv_ab_neg + '&rdp_a_pos1=' + rdp_a_pos + '&rdp_a_neg1=' + rdp_a_neg + '&rdp_b_pos1=' + rdp_b_pos + '&rdp_b_neg1=' + rdp_b_neg + '&rdp_o_pos1=' + rdp_o_pos + '&rdp_o_neg1=' + rdp_o_neg + '&rdp_ab_pos1=' + rdp_ab_pos + '&rdp_ab_neg1=' + rdp_ab_neg + '&ffp_a_pos1=' + ffp_a_pos + '&ffp_a_neg1=' + ffp_a_neg + '&ffp_b_pos1=' + ffp_b_pos + '&ffp_b_neg1=' + ffp_b_neg + '&ffp_o_pos1=' + ffp_o_pos + '&ffp_o_neg1=' + ffp_o_neg + '&ffp_ab_pos1=' + ffp_ab_pos + '&ffp_ab_neg1=' + ffp_ab_neg + '&wb_bombay1=' + wb_bombay + '&pcv_bombay1=' + pcv_bombay + '&rdp_bombay1=' + rdp_bombay + '&ffp_bombay1=' + ffp_bombay;
 // AJAX code to submit form.
+
             $.ajax({
             type: "POST",
             url: "ajaxcallModal.php",
@@ -280,7 +337,7 @@ function checkTime(i) {
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
-      <!-- search form -->
+     <!-- search form -->
       <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
@@ -297,6 +354,7 @@ function checkTime(i) {
          <li><a href="#"><i class="fa fa-th-list"></i> <span>Update  Stock</span></a></li>
         <li><a href="currentdailyStock.php"><i class="fa fa-th"></i> <span>Current Stock</span></a></li>
        <li><a href="historicalStock.php"><i class="fa fa-table"></i> <span>Historical Stock</span></a></li>
+       <li><a href="broadCast.php"><i class="fa fa-globe"></i> <span>Broadcast</span></a></li>
         <li><a href="findDonors.php"><i class="fa fa-search"></i> <span>Find Donors</span></a></li>
         <li><a href="userProfile.php"><i class="fa fa-user"></i> <span>Profile</span></a></li>
         <li><a href="changePassword.php"><i class="fa fa-save"></i> <span>Change Password</span></a></li>
@@ -341,11 +399,11 @@ function checkTime(i) {
                
                 
                 <div class="col-md-6">
-                <div class="col-md-12" align="left">Date</div>
+                <div class="col-md-12" id="smalldivD" align="left">Date</div>
                 <div class="col-md-12" align="left">
-               <form role="form" id="formfield" method="post"  enctype="multipart/form-data">
+                <form role="form" id="formfield" method="post"  enctype="multipart/form-data" onkeypress="return event.keyCode != 13;">
                 <input type="hidden" name="action" value="add_form" /> 
-                        <div class="input-group">
+                        <div class="input-group" id="smalldivD">
             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                  <input type="date" value="<?php echo date('Y-m-d'); ?>" name="date" placeholder="01/02/2014" class="form-control" id="date"/>
                  <input type="text" name="zero" id="zero" hidden="">
@@ -357,18 +415,18 @@ function checkTime(i) {
                 <div class="col-md-6">
                 <div class="col-md-12" align="left">Time</div>
                  <div class="col-md-12" align="left">
-                 <div class="input-group">
+                 <div class="input-group" id="smalldivT">
             <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
                  <input type="text" name="time" class="form-control" id="txt"/>
                   </div>
                  </div> 
               </div></div>
-            
+        
       
-             <div class="col-md-12" align="left"><p>Daily Stock</p></div>
+             <div class="col-md-12" id="smalldivD" align="left"><p>Daily Stock</p></div>
              
-                <div class="col-md-12" style="background-color: #dee5ed" id="rcorners"><div class="col-md-12"><b>Whole Blood:</b></div>
-               <div class="col-md-12"></div>
+                <div class="col-md-12" style="background-color: #9ab4bd" id="rcorners"><div class="col-md-12"><b>Whole Blood<span>*</span> :</b></div>
+               <div class="col-md-12">&nbsp;</div>
                 <div class="tab-content">
              
     <div id="wb" class="tab-pane fade in active">
@@ -377,7 +435,7 @@ function checkTime(i) {
               <div class="col-md-3">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">A+</span>
-                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="wb_a_pos" onkeypress="return isNumberKey(event)" id="wb_a_pos">
+                          <input type="text" class="form-control input" placeholder="" aria-describedby="basic-addon1" name="wb_a_pos" onkeypress="return isNumberKey(event)" id="wb_a_pos" required>
                         </div>
                  </div>
                 
@@ -385,31 +443,31 @@ function checkTime(i) {
               <div class="col-md-3">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">B+</span>
-                           <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="wb_b_pos" onkeypress="return isNumberKey(event)" id="wb_b_pos">            
+                           <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="wb_b_pos" onkeypress="return isNumberKey(event)" id="wb_b_pos" required>            
                         </div>
                  </div>
                 <div class="col-md-3">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">AB+</span>
-                            <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="wb_ab_pos" onkeypress="return isNumberKey(event)" id="wb_ab_pos">
+                            <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="wb_ab_pos" onkeypress="return isNumberKey(event)" id="wb_ab_pos" required>
                         </div>
                  </div>
                  <div class="col-md-3">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">O+</span>
-                           <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="wb_o_pos" onkeypress="return isNumberKey(event)" id="wb_o_pos">
+                           <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="wb_o_pos" onkeypress="return isNumberKey(event)" id="wb_o_pos" required>
                         </div>
                  </div>
                  <div class="col-md-3">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">ANeg</span>
-                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="wb_a_neg" onkeypress="return isNumberKey(event)" id="wb_a_neg">
+                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="wb_a_neg" onkeypress="return isNumberKey(event)" id="wb_a_neg" required>
                         </div>
                  </div>
                  <div class="col-md-3">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">BNeg</span>
-                           <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="wb_b_neg" onkeypress="return isNumberKey(event)" id="wb_b_neg"> 
+                           <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="wb_b_neg" onkeypress="return isNumberKey(event)" id="wb_b_neg" required> 
                         </div>
                  </div>
                  
@@ -417,7 +475,7 @@ function checkTime(i) {
               <div class="col-md-3">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">ABNeg</span>
-                           <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="wb_ab_neg" onkeypress="return isNumberKey(event)" id="wb_ab_neg">
+                           <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="wb_ab_neg" onkeypress="return isNumberKey(event)" id="wb_ab_neg" required>
                         
                         </div>
                  </div>
@@ -426,42 +484,42 @@ function checkTime(i) {
               <div class="col-md-3">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">ONeg</span>
-                           <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="wb_o_neg" onkeypress="return isNumberKey(event)" id="wb_o_neg">
+                           <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="wb_o_neg" onkeypress="return isNumberKey(event)" id="wb_o_neg" required>
                    </div>
                  </div>
              </div>
             </div></div>
  <!-- PCV Tab --><div class="col-md-12">&nbsp;</div>
-  <div class="col-md-12" style="background-color: #bdcbde" id="rcorners">
-        <div class="col-md-12"><b>PCV:</b></div>
-        <div class="col-md-12"></div>
+  <div class="col-md-12" style="background-color: #d56073" id="rcorners">
+        <div class="col-md-12"><b>PCV<span>*</span> :</b></div>
+        <div class="col-md-12">&nbsp;</div>
               <div id="pcv">
                             
               <div class="col-md-3">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">A+</span>
-                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="pcv_a_pos" onkeypress="return isNumberKey(event)" id="pcv_a_pos">
+                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="pcv_a_pos" onkeypress="return isNumberKey(event)" id="pcv_a_pos" required>
                         </div>
                  </div>
 
                 <div class="col-md-3">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">B+</span>
-                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="pcv_b_pos" onkeypress="return isNumberKey(event)" id="pcv_b_pos">
+                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="pcv_b_pos" onkeypress="return isNumberKey(event)" id="pcv_b_pos" required>
                         </div>
                  </div>  
 
                   <div class="col-md-3">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">AB+</span>
-                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="pcv_ab_pos" onkeypress="return isNumberKey(event)" id="pcv_ab_pos">
+                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="pcv_ab_pos" onkeypress="return isNumberKey(event)" id="pcv_ab_pos" required>
                         </div>
                  </div>
 
                  <div class="col-md-3">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">O+</span>
-                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="pcv_o_pos" onkeypress="return isNumberKey(event)" id="pcv_o_pos">
+                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="pcv_o_pos" onkeypress="return isNumberKey(event)" id="pcv_o_pos" required>
                         </div>
                  </div>
                  
@@ -470,7 +528,7 @@ function checkTime(i) {
               <div class="col-md-3">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">ANeg</span>
-                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="pcv_a_neg" onkeypress="return isNumberKey(event)" id="pcv_a_neg">
+                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="pcv_a_neg" onkeypress="return isNumberKey(event)" id="pcv_a_neg" required>
                         </div>
                  </div>
                  
@@ -481,21 +539,21 @@ function checkTime(i) {
               <div class="col-md-3">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">BNeg</span>
-                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="pcv_b_neg" onkeypress="return isNumberKey(event)" id="pcv_b_neg">
+                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="pcv_b_neg" onkeypress="return isNumberKey(event)" id="pcv_b_neg" required>
                         </div>
                  </div>
                  
                   <div class="col-md-3">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">ABNeg</span>
-                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="pcv_ab_neg" onkeypress="return isNumberKey(event)" id="pcv_ab_neg">
+                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="pcv_ab_neg" onkeypress="return isNumberKey(event)" id="pcv_ab_neg" required>
                         </div>
                  </div>
                  
             <div class="col-md-3">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">ONeg</span>
-                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="pcv_o_neg" onkeypress="return isNumberKey(event)" id="pcv_o_neg">
+                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="pcv_o_neg" onkeypress="return isNumberKey(event)" id="pcv_o_neg" required>
                         </div>
             </div>
     
@@ -503,9 +561,9 @@ function checkTime(i) {
             </div>
           <!-- /PCV Tab -->
           <!-- RDP Tab --><div class="col-md-12">&nbsp;</div>
-        <div class="col-md-12" style="background-color: #9fb6cf" id="rcorners">   
-        <div class="col-md-12"><b>RDP:</b></div>
-        <div class="col-md-12"></div> 
+        <div class="col-md-12" style="background-color: #ec9e69" id="rcorners">   
+        <div class="col-md-12"><b>RDP<span>*</span> :</b></div>
+        <div class="col-md-12">&nbsp;</div> 
 
            <div id="rdp">
     
@@ -513,19 +571,19 @@ function checkTime(i) {
               <div class="col-md-3">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">A+</span>
-                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="rdp_a_pos" onkeypress="return isNumberKey(event)" id="rdp_a_pos">
+                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="rdp_a_pos" onkeypress="return isNumberKey(event)" id="rdp_a_pos" required>
                         </div>
                  </div>
                 <div class="col-md-3">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">B+</span>
-                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="rdp_b_pos" onkeypress="return isNumberKey(event)" id="rdp_b_pos">
+                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="rdp_b_pos" onkeypress="return isNumberKey(event)" id="rdp_b_pos" required>
                         </div>
                  </div>
                  <div class="col-md-3">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">AB+</span>
-                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="rdp_ab_pos" onkeypress="return isNumberKey(event)" id="rdp_ab_pos">
+                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="rdp_ab_pos" onkeypress="return isNumberKey(event)" id="rdp_ab_pos" required>
                         </div>
                  </div>
                   <div class="col-md-3">
@@ -562,9 +620,9 @@ function checkTime(i) {
         </div>
       <!-- /RDP Tab -->
                 <!-- FFP Tab --><div class="col-md-12">&nbsp;</div> 
-        <div class="col-md-12" style="background-color: #8599c2"  id="rcorners">  
-        <div class="col-md-12"><b>FFP:</b></div>
-        <div class="col-md-12"></div> 
+        <div class="col-md-12" style="background-color: #ffff8f"  id="rcorners">  
+        <div class="col-md-12"><b>FFP<span>*</span> :</b></div>
+        <div class="col-md-12">&nbsp;</div> 
 
     <div id="ffp" class="ffp">
     
@@ -619,10 +677,10 @@ function checkTime(i) {
                  </div>
           </div>
           </div>
-          <!-- FFP Tab --><div class="col-md-12">&nbsp;</div> 
+          <!-- BBG Tab --><div class="col-md-12">&nbsp;</div> 
         <div class="col-md-12" style="background-color: #dee5ed""  id="rcorners">  
         <div class="col-md-12"><b>Bombay Blood Group:</b></div>
-        <div class="col-md-12"></div> 
+        <div class="col-md-12">&nbsp;</div> 
 
     <div id="bombay_bg" class="bombay_bg">
     
@@ -630,34 +688,38 @@ function checkTime(i) {
               <div class="col-md-3">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">WB</span>
-                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="bombay_wb" onkeypress="return isNumberKey(event)" id="bombay_wb">
+                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="wb_bombay" onkeypress="return isNumberKey(event)" id="wb_bombay">
                         </div>
                  </div>
                  <div class="col-md-3">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">PCV</span>
-                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="bombay_pcv" onkeypress="return isNumberKey(event)" id="bombay_pcv">
+                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="pcv_bombay" onkeypress="return isNumberKey(event)" id="pcv_bombay">
                         </div>
                  </div>
                   <div class="col-md-3">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">RDP</span>
-                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="bombay_rdp" onkeypress="return isNumberKey(event)" id="bombay_rdp">
+                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="rdp_bombay" onkeypress="return isNumberKey(event)" id="rdp_bombay">
                         </div>
                  </div>
                  <div class="col-md-3">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">FFP</span>
-                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="bombay_ffp" onkeypress="return isNumberKey(event)" id="bombay_ffp">
+                          <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="ffp_bombay" onkeypress="return isNumberKey(event)" id="ffp_bombay">
                         </div>
                  </div>
 
           </div>
           </div> 
           <div class="col-md-12">&nbsp;</div>
+           <div class="col-md-12">
+                 <p><b>Section marked with * are compulsory.</b></p>
+                    </div> 
+          <div class="col-md-12">&nbsp;</div>
           <div class="col-md-12">
                   <center>
-                      <input type="button" name="btn" value="Submit" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-primary"/></center>
+                      <input type="button" name="btn" value="Submit" id="submitBtn" data-target="#confirm-submit" data-toggle="modal" class="btn btn-primary"/></center>
                     </div>       
           </div>
 
@@ -718,7 +780,7 @@ function checkTime(i) {
                             <th>BNeg</th>
                             <th>ABNeg</th>
                             <th>ONeg</th>
-                            <th>Bombay Blood Group</th>
+                            <th>BBG</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -733,7 +795,7 @@ function checkTime(i) {
                               <td class="center" data-title="BNeg" id="wb_b_neg1"></td>
                               <td class="center" data-title="ABNeg" id="wb_ab_neg1"></td>         
                               <td class="center" data-title="ONeg" id="wb_o_neg1"></td>
-                              <td class="center" data-title="Bombay Blood Group" id="bombay_wb1"></td>
+                              <td class="center" data-title="BBG" id="wb_bombay1"></td>
                             </tr>
 
                              <tr>
@@ -746,7 +808,7 @@ function checkTime(i) {
                               <td class="center" data-title="BNeg" id="pcv_b_neg1"></td>
                               <td class="center" data-title="ABNeg" id="pcv_ab_neg1"></td>        
                               <td class="center" data-title="ONeg" id="pcv_o_neg1"></td> 
-                              <td class="center" data-title="Bombay Blood Group" id="bombay_pcv1"></td>
+                              <td class="center" data-title="BBG" id="pcv_bombay1"></td>
                             </tr>
 
 
@@ -760,7 +822,7 @@ function checkTime(i) {
                               <td class="center" data-title="BNeg" id="rdp_b_neg1"></td>
                               <td class="center" data-title="ABNeg" id="rdp_ab_neg1"></td>         
                               <td class="center" data-title="ONeg" id="rdp_o_neg1"></td>           
-                              <td class="center" data-title="Bombay Blood Group" id="bombay_rdp1"></td>
+                              <td class="center" data-title="BBG" id="rdp_bombay1"></td>
                             </tr>
 
 
@@ -774,7 +836,7 @@ function checkTime(i) {
                               <td class="center" data-title="BNeg" id="ffp_b_neg1"></td>
                               <td class="center" data-title="ABNeg" id="ffp_ab_neg1"></td>        
                               <td class="center" data-title="ONeg" id="ffp_o_neg1"></td> 
-                              <td class="center" data-title="Bombay Blood Group" id="bombay_ffp1"></td>
+                              <td class="center" data-title="BBG" id="ffp_bombay1"></td>
                             </tr>
                       </tbody>
                 </table>
@@ -784,7 +846,8 @@ function checkTime(i) {
         
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <a href="#" id="submit" class="btn btn-success success" name="submit" onclick="myFunction()" data-dismiss="modal">Confirm</a>
+              <input type="submit" href="#" id="submit" class="btn btn-success success" name="Confirm" onclick="myFunction();" data-dismiss="modal"/> 
+             <!--  <button id="submit" type="submit" name="submit" data-dismiss="modal" class="btn btn-success" onkeypress="myFunction();" value="Confirm">Confirm</button> -->
             </div>
         </div>
     </div>

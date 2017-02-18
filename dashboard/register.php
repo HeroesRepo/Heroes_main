@@ -18,7 +18,7 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<link rel="stylesheet" href="dist/css/style.css">
+<link rel="stylesheet" type="text/css" href="dist/css/style.css">
 <SCRIPT language=Javascript>
       <!--
       function isNumberKey(evt)
@@ -70,7 +70,7 @@ if(mysqli_num_rows($query)==1)
 			}
 		else
 			{
-					$q=mysqli_query($con,"insert into bb_credentials (bb_regno,email_id,contact_no,altcontact_no,password) values(UCASE('$bb_regno'),'$email_id','$contact_no','$altcontact_no',$encrypt_password')") or die(mysqli_error($con));
+					$q=mysqli_query($con,"insert into bb_credentials (bb_regno,email_id,contact_no,altcontact_no,password) values(UCASE('$bb_regno'),'$email_id','$contact_no','$altcontact_no','$encrypt_password')") or die(mysqli_error($con));
 			
 				if($q)
 				{ 
@@ -182,7 +182,11 @@ else
     	<div class="col-md-12">	
         <center><button type="submit" class="btn btn-primary" name="submit">&nbsp;&nbsp;Register&nbsp;&nbsp;</button></center></div>
     	
-        <div class="col-md-12" align="center">&nbsp;</div>
+     
+         <div class="col-md-12" align="center">&nbsp;</div>
+    
+      <div class="col-md-12" align="left"><p>Already registered?&nbsp;<a href="index.php">Login Here</a></p></div>
+
     
      </form>	
 

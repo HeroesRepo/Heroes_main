@@ -1,5 +1,5 @@
 var app = angular.module("heroesMainApp")
-app.controller("heroesMainCtrl", ['$scope','$timeout', 'dailyStockSvc', 'completeStockSvc','donorDetailsSvc', function($scope, $timeout, dailyStockSvc, completeStockSvc,donorDetailsSvc){
+app.controller("heroesMainCtrl", ['$scope','$timeout', 'dailyStockSvc', 'completeStockSvc','donorDetailsSvc','getCountSvc','broadcastSvc', function($scope, $timeout, dailyStockSvc, completeStockSvc,donorDetailsSvc,getCountSvc,broadcastSvc){
 
   $scope.hasSearched = false;
   $scope.tablePopulated = false;
@@ -10,19 +10,21 @@ app.controller("heroesMainCtrl", ['$scope','$timeout', 'dailyStockSvc', 'complet
   $scope.latitude;
   $scope.longitude;
   $scope.isSetOrigin = false;
+
 	$scope.search = {
-    	bloodGroup: 'a_pos',
+    	
     	bloodGroups: [
-      		{name: 'A+ve', identifier: 'a_pos'},
+          {name: 'A+ve', identifier: 'a_pos'},
 	      	{name: 'O+ve', identifier: 'o_pos'},
 	      	{name: 'B+ve', identifier: 'b_pos'},
 	      	{name: 'AB+ve', identifier: 'ab_pos'},
 	      	{name: 'A-ve', identifier: 'a_neg'},
 	      	{name: 'O-ve', identifier: 'o_neg'},
 	      	{name: 'B-ve', identifier: 'b_neg'},
-	      	{name: 'AB-ve', identifier: 'ab_neg'}
+	      	{name: 'AB-ve', identifier: 'ab_neg'},
+          {name: 'Bombay Blood Group', identifier: 'bombay'}
     	],
-    	component: 'pcv',
+   
     	components: [
     		{name: 'Whole Blood', identifier: 'wb'},
     		{name: 'PCV', identifier: 'pcv'},
@@ -47,8 +49,18 @@ app.controller("heroesMainCtrl", ['$scope','$timeout', 'dailyStockSvc', 'complet
       }, function(error){
 
       })
+});
 
-  });
+   angular.element(document).ready(function () {
+    broadcastSvc.getBroadcast()
+      .then(function(response){
+        //console.log(response);
+        $scope.data = response;
+      }, function(error){
+
+      })
+});
+
 
   var getLocation = function(){
     if (navigator.geolocation) {
@@ -57,6 +69,16 @@ app.controller("heroesMainCtrl", ['$scope','$timeout', 'dailyStockSvc', 'complet
         alert("Geolocation is not supported by this browser.");
     }
   }
+
+  $scope.getCount = function() {
+      getCountSvc.setCountDetails($scope.search.bloodGroup, $scope.search.component)
+      .then(function(response){
+
+      }, function(error){
+
+      });
+
+  };
 
  	$scope.retrieveStock = function(){
  		$scope.hasSearched = true;
@@ -97,6 +119,11 @@ app.controller("heroesMainCtrl", ['$scope','$timeout', 'dailyStockSvc', 'complet
               $scope.stockData = $scope.svcData;
               $scope.$apply()
             }
+            else
+            {
+              $scope.stockData = "";
+              $scope.$apply();
+            }
           }
    			}, function(error){
    		
@@ -117,13 +144,16 @@ app.controller("heroesMainCtrl", ['$scope','$timeout', 'dailyStockSvc', 'complet
  	};
 
   $scope.insertDonorData = function() {
-      donorDetailsSvc.setDonorDetails($scope.dn_name, $scope.dn_emailid, $scope.dn_phoneno, $scope.dn_bloodgroup)
+      donorDetailsSvc.setDonorDetails($scope.dn_name, $scope.dn_emailid, $scope.dn_phoneno, $scope.dn_bloodgroup,$scope.dn_checkbox,$scope.dn_gender,$scope.dn_birthdate)
       .then(function(response){
         $scope.dn_name = "";
         $scope.dn_emailid = "";
         $scope.dn_phoneno = "";
         $scope.dn_bloodgroup = "";
-        $('.alertContainer').append("<div class='alert alert-success alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Congratulations! You have successfully registered as a donor.</div>").delay(7000).fadeOut();
+         $scope.dn_checkbox = "";
+         $scope.dn_gender = "";
+         $scope.dn_birthdate = "";
+         $('.alertContainer').append("<div class='alert alert-success alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Congratulations! You have successfully registered as a donor.</div>").delay(7000).fadeOut();
       }, function(error){
 
       });
@@ -261,6 +291,9 @@ app.controller("heroesMainCtrl", ['$scope','$timeout', 'dailyStockSvc', 'complet
               pointPadding: 0.2,
               borderWidth: 0
           }
+      },
+      exporting: {
+         enabled: false
       },
       series: []
   }

@@ -122,6 +122,7 @@ $query2='select * from bb_info where bb_regno="'.$_SESSION['bb_regno'].'"  ';
          <li><a href="updateStock.php"><i class="fa fa-th"></i> <span>Update Stock</span></a></li>
         <li><a href="currentdailyStock.php"><i class="fa fa-th"></i> <span>Current Stock</span></a></li>
         <li><a href="historicalStock.php"><i class="fa fa-table"></i> <span>Historical Stock</span></a></li>
+    <li><a href="broadCast.php"><i class="fa fa-globe"></i> <span>Broadcast</span></a></li>
         <li><a href="findDonors.php"><i class="fa fa-search"></i> <span>Find Donors</span></a></li>  
         <li><a href="userProfile.php"><i class="fa fa-user"></i> <span>Profile</span></a></li>
         <li><a href="#"><i class="fa fa-save"></i> <span>Change Password</span></a></li>
@@ -162,9 +163,9 @@ $query2='select * from bb_info where bb_regno="'.$_SESSION['bb_regno'].'"  ';
         <div class="col-md-6">
           <!-- general form elements -->
           <div class="box box-success" style="border:groove">
-            <div class="box-header with-border">
+            <!-- <div class="box-header with-border">
               <h3 class="box-title">Change Password</h3>
-            </div>
+            </div> -->
             <!-- /.box-header -->
             <!-- form start -->
             <form role="form" id="formpassword" method="post">

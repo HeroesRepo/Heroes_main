@@ -125,6 +125,7 @@ $query2='select * from bb_info where bb_regno="'.$_SESSION['bb_regno'].'"';
          <li><a href="updateStock.php"><i class="fa fa-th"></i> <span>Update Stock</span></a></li>
         <li><a href="currentdailyStock.php"><i class="fa fa-th"></i> <span>Current Stock</span></a></li>
         <li><a href="historicalStock.php"><i class="fa fa-table"></i> <span>Historical Stock</span></a></li>
+     <li><a href="broadCast.php"><i class="fa fa-globe"></i> <span>Broadcast</span></a></li>
         <li><a href="#"><i class="fa fa-search"></i> <span>Find Donors</span></a></li> 
         <li><a href="userProfile.php"><i class="fa fa-user"></i> <span>Profile</span></a></li>
         <li><a href="changePassword.php"><i class="fa fa-save"></i> <span>Change Password</span></a></li>
@@ -162,8 +163,9 @@ $query2='select * from bb_info where bb_regno="'.$_SESSION['bb_regno'].'"';
                 <div class="col-md-2"></div>
                 <div class="col-md-5">
                   <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-tint" style="color: red;"></i></span>
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-tint"></i></span>
                     <select class="form-control" id="bloodGroup">
+                      <option value="">--Please Select Bloodgroup--</option>
                       <option value="A+ve">A+ve</option>
                       <option value="B+ve">B+ve</option>
                       <option value="AB+ve">AB+ve</option>
@@ -172,7 +174,7 @@ $query2='select * from bb_info where bb_regno="'.$_SESSION['bb_regno'].'"';
                       <option value="B-ve">BNeg</option>
                       <option value="AB-ve">ABNeg</option>
                       <option value="O-ve">ONeg</option>
-                      <option value="Bombay_bg">Bombay Blood Group</option>
+                      <option value="BBG">Bombay Blood Group</option>
                     </select>
                 </div>
             </div>

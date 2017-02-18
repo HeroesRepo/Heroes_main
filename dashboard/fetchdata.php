@@ -18,10 +18,10 @@ $request=$_POST['request'];
 include "include/connection.php";
 $query="select * from bb_dailystock_hist where DATE(posting_time)='$request' AND bb_regno='".$_SESSION['bb_regno']."'";
 $result=mysqli_query($con,$query);
-echo "<br />Total Number of Records ".mysqli_num_rows($result);
+echo "<br />Total Number of Records: ".mysqli_num_rows($result);
           if (mysqli_num_rows($result) == 0) {
-                                    echo "<br>";
-                                    echo "Record Not Found....!!!"; 
+                                    /*echo "<br>";
+                                    echo "Record Not Found....!!!"; */
                                    } 
 
           else { 
@@ -33,14 +33,15 @@ echo "<br />Total Number of Records ".mysqli_num_rows($result);
                     ?>
 
             <div id="no-more-tables">
-            <div align="right">
+            <div align="left">
             <?php
-               echo "<br>";
-               echo "<b>Last Updated:</b>";
+              echo "<br>";
+              echo "<b>Time   of   Update&nbsp;:</b>";
               $time = $row['posting_time'];
               $timestamp = strtotime($time);
               $display_time = date('H:i:s', $timestamp); // HH:ss
-              echo $display_time;
+              echo "&nbsp;".$display_time;
+              echo "<br>";
             ?>
             </div>
                 <table class="col-md-12 table table-hover cf" id="example2">
@@ -55,6 +56,7 @@ echo "<br />Total Number of Records ".mysqli_num_rows($result);
                             <th>BNeg</th>
                             <th>ABNeg</th>
                             <th>ONeg</th>
+                            <th>BBG</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -69,6 +71,7 @@ echo "<br />Total Number of Records ".mysqli_num_rows($result);
                               <td class="center" data-title="BNeg"><?php echo $row['wb_b_neg']?></td>
                               <td class="center" data-title="ABNeg"><?php echo $row['wb_ab_neg']?></td>            
                               <td class="center" data-title="ONeg"><?php echo $row['wb_o_neg']?></td>
+                              <td class="center" data-title="BBG"><?php echo $row['wb_bombay']?></td>
                             </tr>
                             <tr>
                               <td data-title="Component">PCV</td>
@@ -79,7 +82,8 @@ echo "<br />Total Number of Records ".mysqli_num_rows($result);
                               <td class="center" data-title="ANeg"><?php echo $row['pcv_a_neg']?></td>
                               <td class="center" data-title="BNeg"><?php echo $row['pcv_b_neg']?></td>
                               <td class="center" data-title="ABNeg"><?php echo $row['pcv_ab_neg']?></td>         
-                               <td class="center" data-title="ONeg"><?php echo $row['pcv_o_neg']?></td>     
+                               <td class="center" data-title="ONeg"><?php echo $row['pcv_o_neg']?></td>  
+                                <td class="center" data-title="BBG"><?php echo $row['pcv_bombay']?></td>   
                             </tr>
                             <tr>
                               <td data-title="Component">RDP</td>
@@ -90,7 +94,8 @@ echo "<br />Total Number of Records ".mysqli_num_rows($result);
                               <td class="center" data-title="ANeg"><?php echo $row['rdp_a_neg']?></td>
                               <td class="center" data-title="BNeg"><?php echo $row['rdp_b_neg']?></td>
                               <td class="center" data-title="ABNeg"><?php echo $row['rdp_ab_neg']?></td>      
-                              <td class="center" data-title="ONeg"><?php echo $row['rdp_o_neg']?></td>      
+                              <td class="center" data-title="ONeg"><?php echo $row['rdp_o_neg']?></td> 
+                               <td class="center" data-title="BBG"><?php echo $row['rdp_bombay']?></td>     
                             </tr>
                             <tr>
                               <td data-title="Component">FFP</td>
@@ -102,6 +107,7 @@ echo "<br />Total Number of Records ".mysqli_num_rows($result);
                               <td class="center" data-title="BNeg"><?php echo $row['ffp_b_neg']?></td>
                               <td class="center" data-title="ABNeg"><?php echo $row['ffp_ab_neg']?></td>       
                               <td class="center" data-title="ONeg"><?php echo $row['ffp_o_neg']?></td>    
+                              <td class="center" data-title="BBG"><?php echo $row['ffp_bombay']?></td>
                             </tr>
                
             </table>
@@ -115,7 +121,7 @@ echo "<br />Total Number of Records ".mysqli_num_rows($result);
     ?>
 <?php
 }
-?>
+?><br><br><br><br>
 </body>
 </html>
 

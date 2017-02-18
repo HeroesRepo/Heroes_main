@@ -17,12 +17,12 @@ if($_POST['request'])
 $request=ltrim($_POST['request']);
 //$string = preg_replace('/\s+/','',$string);
 include "include/connection.php";
-$query="select * from donors_master where dn_bloodgroup='$request'";
+$query="select distinct dn_name,dn_gender,dn_phoneno from donors_master where dn_bloodgroup='$request' && dn_checkbox='true'";
 $result=mysqli_query($con,$query);
-echo "<br />Total Number of Records ".mysqli_num_rows($result);
+echo "<br />Total Number of Records: ".mysqli_num_rows($result);
           if (mysqli_num_rows($result) == 0) {
-                                    echo "<br>";
-                                    echo "Record Not Found....!!!"; 
+                                    /*echo "<br>";
+                                    echo "Record Not Found....!!!"; */
                                    } 
 
           else { 
@@ -33,8 +33,9 @@ echo "<br />Total Number of Records ".mysqli_num_rows($result);
                         <tr>
                            
                             <th style="text-align: center;">Name</th>
+                            <th style="text-align: center;">Gender</th>
                             <th style="text-align: center;">Phone No.</th>
-                            
+                           
                         </tr>
                     </thead>
                     <tbody>
@@ -45,8 +46,10 @@ echo "<br />Total Number of Records ".mysqli_num_rows($result);
                            <tr>
                               
                               <td class="center" data-title="Name" style="text-align: center;"><?php echo $row['dn_name']?></td>
+                              <td class="center" data-title="Gender" style="text-align: center;"><?php echo $row['dn_gender']?></td>
                               <td class="center" data-title="Phone No" style="text-align: center;"><?php echo $row['dn_phoneno']?></td>
-                             
+                            <!--  <td class="center" data-title="Birthdate" style="text-align: center;">
+                            <?php echo $row['dn_birthdate']?></td> -->
                             </tr>
                            <?php
                   };  
