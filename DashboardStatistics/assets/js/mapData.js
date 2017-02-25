@@ -13,8 +13,8 @@
          initialize();
         $.getJSON("assets/php/mapData.php", function(json1) {
           $.each(json1, function(key, data) {
-            console.log(data);
-            var latLng = new google.maps.LatLng(data.lat, data.lng); 
+           // console.log(data);
+            var latLng = new google.maps.LatLng(data.latt, data.lng); 
             // Creating a marker and putting it on the map
             var marker = new google.maps.Marker({
                 map:map,

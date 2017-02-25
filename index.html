@@ -162,7 +162,7 @@ $(document).ready(function(){
                           <option value="" disabled selected>COMPONENT</option>
                          </select>
                                               </div>  
-                    <div style="margin-top: 20px;"><button type="submit" id="searchButton" class="btn btn-lg btn-default btn-custom-search" ng-click="retrieveStock(); getCount();" ng-model="button" value="click" disabled><a href="#availability" style="color: white">SEARCH</a></button></div>
+                    <div style="margin-top: 20px;"><button type="submit" id="searchButton" class="btn btn-lg btn-default btn-custom-search" ng-click="retrieveStock(); getCount(); getLatLon();" ng-model="button" value="click" disabled><a href="#availability" style="color: white">SEARCH</a></button></div>
                     </form>
                 </div>
                 <div class="alert-info alert" id="locationAlert" role="alert" style="padding: 7px; margin-top: 15px;">
@@ -461,6 +461,7 @@ $(document).ready(function(){
     <script type="text/javascript" src="js/services/donorDetailsSvc.js"></script>
     <script type="text/javascript" src="js/services/getCountSvc.js"></script>
     <script type="text/javascript" src="js/services/broadcastSvc.js"></script>
+     <script type="text/javascript" src="js/services/getLatLonSvc.js"></script>
     <!-- Contact Form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
 

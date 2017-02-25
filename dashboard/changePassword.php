@@ -1,4 +1,4 @@
-<?php<?php
+<?php
 session_start();
 if (!(isset($_SESSION['bb_regno']) && $_SESSION['bb_regno'] != '')) {
 

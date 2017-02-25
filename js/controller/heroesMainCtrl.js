@@ -1,5 +1,5 @@
 var app = angular.module("heroesMainApp")
-app.controller("heroesMainCtrl", ['$scope','$timeout', 'dailyStockSvc', 'completeStockSvc','donorDetailsSvc','getCountSvc','broadcastSvc', function($scope, $timeout, dailyStockSvc, completeStockSvc,donorDetailsSvc,getCountSvc,broadcastSvc){
+app.controller("heroesMainCtrl", ['$scope','$timeout', 'dailyStockSvc', 'completeStockSvc','donorDetailsSvc','getCountSvc','broadcastSvc', 'getLatLonSvc' , function($scope, $timeout, dailyStockSvc, completeStockSvc,donorDetailsSvc,getCountSvc,broadcastSvc,getLatLonSvc){
 
   $scope.hasSearched = false;
   $scope.tablePopulated = false;
@@ -79,6 +79,8 @@ app.controller("heroesMainCtrl", ['$scope','$timeout', 'dailyStockSvc', 'complet
       });
 
   };
+
+ 
 
  	$scope.retrieveStock = function(){
  		$scope.hasSearched = true;
@@ -172,6 +174,17 @@ app.controller("heroesMainCtrl", ['$scope','$timeout', 'dailyStockSvc', 'complet
   	$scope.origin = new google.maps.LatLng($scope.latitude,$scope.longitude);
     $scope.isSetOrigin = true;
  	}
+
+   $scope.getLatLon = function() {
+      getLatLonSvc.setLatLonDetails($scope.latitude, $scope.longitude)
+      .then(function(response){
+    
+      }, function(error){
+
+      });
+
+  };
+
 
 	var showError = function(error) {
     switch(error.code) {
