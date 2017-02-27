@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+if (!(isset($_SESSION['username']) && $_SESSION['username'] != '')) {
+
+header ("Location: index.php");
+
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -43,7 +52,7 @@
     <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
 
-    	       <div class="sidebar-wrapper">
+        <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="https://heroes.org.in" class="simple-text" target="_blank">
                     Heroes
@@ -64,29 +73,23 @@
                     </a>
                 </li>
                 <li>
-                    <a href="donorData.html">
+                    <a href="donorData.php">
                         <i class="pe-7s-note2"></i>
                         <p>Donor Statistics</p>
                     </a>
                 </li>
                 <li class="active">
-                    <a href="visitorData.html">
+                    <a href="visitorData.php">
                         <i class="pe-7s-news-paper"></i>
                         <p>Visitors Statistics</p>
                     </a>
                 </li>
                 <li>
-                    <a href="maps.html">
+                    <a href="maps.php">
                         <i class="pe-7s-map-marker"></i>
                         <p>Maps</p>
                     </a>
                 </li>
-                <!-- <li>
-                    <a href="bloodbankData.html">
-                        <i class="pe-7s-bell"></i>
-                        <p>BloodBank Statistics</p>
-                    </a>
-                </li> -->
             </ul>
         </div>
     </div>

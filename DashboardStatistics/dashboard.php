@@ -1,6 +1,15 @@
 <?php
-include "assets/php/connection.php";
 
+session_start();
+if (!(isset($_SESSION['username']) && $_SESSION['username'] != '')) {
+
+header ("Location: index.php");
+
+}
+?>
+<?php
+include "assets/php/connection.php";
+//include "assets/php/SessionNotSet.php"
 /*$q="select * from donors_master where dn_gender='Male'";
 $result=mysqli_query($con,$q);
 $male=mysqli_num_rows($result);
@@ -93,7 +102,7 @@ $( document ).ready(function() {
 
             <ul class="nav">
                 <li class="active">
-                    <a href="index.html">
+                    <a href="dashboard.php">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
@@ -105,29 +114,23 @@ $( document ).ready(function() {
                     </a>
                 </li>
                 <li>
-                    <a href="donorData.html">
+                    <a href="donorData.php">
                         <i class="pe-7s-note2"></i>
                         <p>Donor Statistics</p>
                     </a>
                 </li>
                 <li>
-                    <a href="visitorData.html">
+                    <a href="visitorData.php">
                         <i class="pe-7s-news-paper"></i>
                         <p>Visitors Statistics</p>
                     </a>
                 </li>
                 <li>
-                    <a href="maps.html">
+                    <a href="maps.php">
                         <i class="pe-7s-map-marker"></i>
                         <p>Maps</p>
                     </a>
                 </li>
-                <!-- <li>
-                    <a href="bloodbankData.html">
-                        <i class="pe-7s-bell"></i>
-                        <p>BloodBank Statistics</p>
-                    </a>
-                </li> -->
             </ul>
     	</div>
     </div>

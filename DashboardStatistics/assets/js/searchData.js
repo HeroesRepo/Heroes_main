@@ -1,4 +1,13 @@
  $(document).ready(function() {
+ $.ajax({
+                  //method: "GET",
+                  url: "SessionNotSet.php",
+                  //dataType: "script"
+                });
+
+
+
+
         $("input[name$='content_type']").click(function() {
         var test = $(this).val();
             $("div.desc").hide();

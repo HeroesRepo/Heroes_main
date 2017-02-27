@@ -1,63 +1,66 @@
 <?php
 include "assets/php/connection.php";
-    if(isset($_POST['submit']))
-        {
-            session_start();    
-            $username=$_POST['username']; 
-            $password=$_POST['password']; 
-           // $encrypted_mypassword=md5($password);
+  if(isset($_POST['submit']))
+    {
+      session_start();  
+      $username=$_POST['username']; 
+      $password=$_POST['password']; 
+     // $encrypted_mypassword=md5($password);
 
 
-$sql=mysqli_query($con,"select * FROM dashboard_admin WHERE username='$username' and password='$password'") or die(mysqli_error($con));
+$sql=mysqli_query($con,"SELECT * FROM dashboard_admin WHERE username='$username' and password='$password'") or die(mysqli_error($con));
 //$result=mysql_query($sql);
 
-            if(mysqli_num_rows($sql)==1)
-            {
-                $row=mysqli_fetch_array($sql);
-                
-                
-                
-                
-                    echo"<script>";
-                    echo"window.location.href='dashboard.php'";
-                    echo"</script>";
-                }
-                else
-                {
+      if(mysqli_num_rows($sql)==1)
+      {
+        $row=mysqli_fetch_array($sql);
+        
+        
+        $_SESSION['username']=$row['username'];
+     
+        
+          echo"<script>";
+          //echo "Login Successful..!!";
+          echo"window.location.href='dashboard.php'";
+          echo"</script>";
+        }
+        else
+        {
 
-                    $query=mysqli_query($con,"select * from dashboard_admin where username='$username'") or die(mysql_error($con));
-                    if(mysqli_num_rows($query)==1)
-                    {
+          $query=mysqli_query($con,"select * from dashboard_admin where username='$username'") or die(mysql_error($con));
+          if(mysqli_num_rows($query)==1)
+          {
 
-                            $query1=mysqli_query($con,"select * from dashboard_admin where password='$password'") or die(mysql_error($con));
-                            if(mysqli_num_rows($query1)==1)
-                            {
+              $query1=mysqli_query($con,"select * from dashboard_admin where password='$password'") or die(mysql_error($con));
+              if(mysqli_num_rows($query1)==1)
+              {
 
-                            }
-                            else
-                            {
-                                echo"<script>";
-                                echo "alert('Password is incorrect...!');";
-                                echo"</script>";
-                            }
+              }
+              else
+              {
+                echo"<script>";
+                echo "alert('Password is incorrect...!');";
+                echo"</script>";
+              }
 
 
 
-                    }
-                    else
-                    {
-                        echo"<script>";
-                        echo "alert('Username is incorrect...! Please Sign-In to continue...!');";
-                        echo"</script>";
-                    }
+          }
+          else
+          {
+            echo"<script>";
+            echo "alert('Username not registerd...! Please Sign-In to continue...!');";
+            echo"</script>";
+          }
 
-                    
-                            
-                            
-                    
-                }
-            }
+          
+              
+              
+          
+        }
+      }
 ?>
+
 
 <!DOCTYPE html>
 <html>
